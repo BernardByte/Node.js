@@ -19,7 +19,7 @@ const adminTokenValidate = asyncHandler(async (req, res, next) => {
             res.status(401).send({ Message: "User is not authorized or token is missing 18" });
         } else if (req.user.role != 'admin') {
             console.log('some one trying to access admin data')
-            res.status(401).send({ message: "add admin role" })
+            res.status(403).json({ error: 'Forbidden' })
         } else {
             next();
         }
